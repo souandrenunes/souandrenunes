@@ -1,0 +1,1 @@
+# sessao_de_diagnostico
