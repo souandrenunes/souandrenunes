@@ -8,6 +8,23 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* Ajuste fino para a VSL ficar com aspecto de "cinema" */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-emerald-500 selection:text-white">
@@ -17,216 +34,268 @@
         ⚠️ Restam apenas <span class="underline">4 vagas</span> com condição especial de liberação para esta semana.
     </div>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION & VSL -->
     <section class="relative bg-white pt-12 pb-16 md:py-20 border-b border-slate-100">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-8">
                 <span class="inline-block bg-slate-100 text-slate-800 text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full mb-4">
-                    Vaga Estratégica Individual
+                    Diagnóstico Estratégico Individual
                 </span>
-                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
-                    Sessão de Diagnóstico
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                    A sua competência clínica não vai lotar a sua agenda sozinha.
                 </h1>
-                <p class="text-xl md:text-2xl font-bold text-emerald-600 leading-snug mb-6">
-                    Entenda o sistema que vai te ajudar a conquistar de 10 a 30 potenciais pacientes toda semana.
+                <p class="text-xl md:text-2xl font-medium text-slate-600 leading-snug mb-6">
+                    Descubra o sistema para atrair de <strong class="text-emerald-600">10 a 30 potenciais pacientes toda semana</strong>, sem depender de indicações ou dancinhas no Instagram.
                 </p>
-                <p class="text-xs md:text-sm font-bold uppercase tracking-widest text-slate-400 animate-pulse mb-2">
-                    Assista o vídeo abaixo ↓
+                <p class="text-xs md:text-sm font-bold uppercase tracking-widest text-emerald-600 animate-pulse mb-2">
+                    Aperte o play e entenda o método ↓
                 </p>
             </div>
 
-            <!-- VSL PLAYER -->
-            <div class="max-w-3xl mx-auto mb-10 shadow-2xl rounded-2xl overflow-hidden bg-black aspect-video border-4 border-white relative group">
-                <!-- SUBSTITUA O ID DO VÍDEO ABAIXO PELO SEU DA VSL (Ex: ?v=SEU_ID) -->
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/SEU_ID_DA_VSL_AQUI?rel=0&modestbranding=1" title="Apresentação Estratégica" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <!-- VSL PLAYER FORMAT (SIMPLIFICADO E À PROVA DE FALHAS) -->
+            <div class="max-w-4xl mx-auto mb-10 shadow-2xl rounded-2xl overflow-hidden border-4 border-slate-900 bg-black">
+                <div class="video-container">
+                    <!-- INSTRUÇÃO: Substitua "COLOQUE_SEU_ID_AQUI" pelo código final do vídeo do YouTube (ex: dQw4w9WgXcQ) -->
+                    <iframe 
+                        src="https://www.youtube.com/embed/-O6nmh3qrog?controls=0&modestbranding=1&rel=0&showinfo=0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
 
-            <div class="text-center">
-                <a href="https://api.whatsapp.com/send?phone=5521971193493&text=Ol%C3%A1%20Andr%C3%A9!%20Estava%20na%20p%C3%A1gina%20da%20Sess%C3%A3o%20de%20Diagn%C3%B3stico%20e%20gostaria%20de%20receber%20minha%20condi%C3%A7%C3%A3o%20especial." target="_blank" class="inline-block w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white text-base md:text-lg font-bold uppercase tracking-wider px-8 py-5 rounded-xl shadow-lg shadow-emerald-600/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center">
+            <div class="text-center mt-8">
+                <a href="https://api.whatsapp.com/send?phone=5521971193493&text=Ol%C3%A1%20Andr%C3%A9!%20Estava%20na%20p%C3%A1gina%20da%20Sess%C3%A3o%20de%20Diagn%C3%B3stico%20e%20gostaria%20de%20receber%20minha%20condi%C3%A7%C3%A3o%20especial." target="_blank" class="inline-block w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white text-base md:text-lg font-bold uppercase tracking-wider px-8 py-5 rounded-xl shadow-[0_8px_30px_rgb(16,185,129,0.3)] transition-all transform hover:-translate-y-1 text-center">
                     Quero minha vaga com condição especial
                 </a>
-                <div class="flex flex-wrap justify-center items-center gap-6 mt-4 text-xs md:text-sm font-medium text-slate-500">
-                    <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg> Análise Individual</span>
-                    <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg> Conduzida por Mim</span>
-                    <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg> Direcionamento Prático</span>
-                </div>
+                <p class="text-xs font-medium text-slate-400 mt-4 uppercase tracking-widest">
+                    Direto no WhatsApp • 100% Seguro
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- DEPOIMENTOS -->
-    <section class="py-12 bg-slate-100 border-b border-slate-200">
+    <!-- SOCIAL PROOF (DEPOIMENTOS) -->
+    <section class="py-16 bg-slate-50 border-b border-slate-200">
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-xl md:text-2xl font-bold text-center text-slate-900 mb-8">
-                Psi que já passaram pela minha Sessão de Diagnóstico aprovam o resultado:
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-2">
+                Eles pararam de "esperar indicações".
             </h2>
-            <div class="grid grid-cols-2 gap-4 max-w-xs sm:max-w-md md:max-w-xl mx-auto">
-                <!-- SUBSTITUA OS IDS ABAIXO PELOS SEUS DEPOIMENTOS DO YOUTUBE -->
-                <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-black shadow-md border-2 border-white">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/ID_DEPOIMENTO_1" title="Depoimento 1" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p class="text-center text-slate-600 mb-10">Veja o que acontece quando você aplica estratégia no seu consultório:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                <!-- INSTRUÇÃO: Substitua pelos IDs dos depoimentos -->
+                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-black aspect-[9/16]">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/RfVkuKirow4?rel=0" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-black shadow-md border-2 border-white">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/ID_DEPOIMENTO_2" title="Depoimento 2" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-black aspect-[9/16]">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/Qze3ma8qfWs?rel=0" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO MINHA JORNADA (SUA HISTÓRIA ATUALIZADA) -->
+    <!-- HISTÓRIA (RESUMIDA E CONECTIVA) -->
     <section class="py-16 md:py-24 bg-white">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-                <div class="md:col-span-5 max-w-sm mx-auto md:max-w-none w-full shadow-2xl rounded-2xl overflow-hidden border-4 border-slate-100">
-                    <!-- LEMBRE DE SUBIR UMA FOTO COM O NOME "eu.jpg" NA MESMA PASTA DO SITE -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="max-w-sm mx-auto md:max-w-none w-full shadow-2xl rounded-2xl overflow-hidden border-4 border-slate-50">
+                    <!-- FOTO: Lembre de garantir que o arquivo "eu.jpg" esteja na mesma pasta -->
                     <img src="eu.jpg" alt="André Nunes" class="w-full h-auto object-cover aspect-[3/4]">
                 </div>
-                <div class="md:col-span-7 space-y-6">
-                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest block">Minha Jornada</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Como eu cheguei até aqui</h2>
+                <div class="space-y-6">
+                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest block">Muito Prazer, André Nunes</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
+                        De tímido a estrategista: a regra de ouro que mudou meu jogo.
+                    </h2>
                     <div class="text-base md:text-lg text-slate-600 space-y-4 leading-relaxed">
-                        <p>Tudo começou em <strong>MAD MEN</strong>, uma série aclamada por quem ama os tempos antigos.</p>
-                        <p>Ela se passa na Nova York dos anos 60, cheia de tramas, jogos de poder e reviravoltas — e mostra como as vendas e o marketing funcionavam naquela época.</p>
-                        <p>A história gira em torno de uma agência de publicidade que tinha como um de seus principais clientes a <strong>LUCKY STRIKE</strong>. E foi ali que algo virou chave dentro de mim.</p>
-                        <p>Eu percebi que marketing não era só vender produtos. Era sobre posicionamento, percepção e comportamento humano.</p>
-                        <p>Foi nesse momento que nasceu meu desejo pelo marketing — e por isso decidi entrar na faculdade.</p>
-                        <p>Entrei completamente perdido. Tinha vergonha de me comunicar, dificuldade de me expressar e zero clareza de quem eu era nesse jogo.</p>
+                        <p>Minha paixão por esse mercado começou de um jeito inusitado: assistindo <strong>Mad Men</strong>, uma série sobre os gigantes da publicidade de Nova York nos anos 60.</p>
                         
-                        <p class="font-semibold text-slate-900 border-l-4 border-emerald-500 pl-4 italic bg-slate-50 py-3 rounded-r-xl">
-                            👉 Mas aprendi uma coisa que mudou tudo: posicionamento é venda.
-                        </p>
+                        <p>Observando as tramas e os jogos de poder da agência, uma ficha pesada caiu. Eu percebi que marketing não era sobre empurrar produtos goela abaixo. <strong>Era sobre percepção, narrativa e comportamento humano.</strong></p>
                         
-                        <p>Saí dali como um leão. Com voz, presença e visão estratégica.</p>
-                        <p>De lá pra cá, foram muitas histórias, muitos erros, aprendizados e reviravoltas — assim como na série.</p>
-                        <p>Algumas cenas podem até parecer de cinema (rs), mas essas ficam para os próximos episódios.</p>
-                        <p>O que importa agora é o próximo capítulo: a construção de um posicionamento que faça sentido, gere valor e coloque o seu negócio no lugar certo.</p>
-                        <p>Sem fórmulas mágicas. Sem promessas vazias. Com método, clareza e intenção.</p>
+                        <p>Isso me fez entrar na faculdade. Mas a realidade bateu forte: eu era absurdamente tímido, não sabia me expressar e estava completamente perdido no jogo.</p>
                         
-                        <p class="font-bold text-slate-900 border-t border-slate-100 pt-3">
-                            Porque marketing é muito mais do que fazer anúncios na internet. Marketing é estratégia, narrative e decisão.
-                        </p>
-                        <p class="text-emerald-600 font-medium">
-                            Te espero no WhatsApp para marcarmos um bate-papo. Ou, quem sabe, tomar um café ☕️
-                        </p>
+                        <div class="border-l-4 border-emerald-500 pl-5 py-2 my-6 bg-slate-50 rounded-r-xl">
+                            <p class="font-bold text-slate-900 italic">
+                                Foi aí que aprendi a lição que dita tudo o que faço hoje: Posicionamento é Venda.
+                            </p>
+                        </div>
+                        
+                        <p>Quando apliquei isso, saí de lá como um leão. Com voz, presença e um método.</p>
+                        
+                        <p>Hoje, meu trabalho é pegar essa mesma clareza estratégica e instalar no seu consultório. Sem fórmulas mágicas, sem "hacks" de internet. Apenas posicionamento estruturado para que o paciente certo perceba o seu valor antes mesmo da primeira consulta.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO: PARA QUEM É -->
+    <!-- AGITAÇÃO DA DOR (O PROBLEMA DO PSI) -->
     <section class="py-16 md:py-24 bg-slate-900 text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl md:text-4xl font-bold text-center mb-12">Para você, Psi, que…</h2>
-            <div class="space-y-4 mb-10">
-                <div class="flex items-start gap-4 p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                    <div class="text-emerald-400 mt-1"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div>
-                    <p class="text-base md:text-lg text-slate-300">Tem competência clínica de sobra, mas sua agenda ainda depende quase totalmente de indicação.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">A invisibilidade é o maior inimigo do Psi excelente.</h2>
+            <p class="text-center text-slate-400 mb-12 text-lg">Essa sessão foi desenhada exclusivamente para você que:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50 hover:border-emerald-500/50 transition-colors">
+                    <div class="text-emerald-400 mt-1 shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg></div>
+                    <p class="text-slate-300">Tem extrema competência clínica, mas passa o mês tenso porque a <strong>sua agenda depende de indicações</strong> (que são imprevisíveis).</p>
                 </div>
-                <div class="flex items-start gap-4 p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                    <div class="text-emerald-400 mt-1"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div>
-                    <p class="text-base md:text-lg text-slate-300">Sabe que existe um caminho digital para atrair pacientes, mas não sabe por onde começar.</p>
+                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50 hover:border-emerald-500/50 transition-colors">
+                    <div class="text-emerald-400 mt-1 shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg></div>
+                    <p class="text-slate-300">Sabe que precisa do digital, até posta no Instagram, mas já percebeu que <strong>curtidas e views não pagam os boletos</strong> do consultório.</p>
                 </div>
-                <div class="flex items-start gap-4 p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                    <div class="text-emerald-400 mt-1"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div>
-                    <p class="text-base md:text-lg text-slate-300">Já posta no Instagram e percebeu que curtida não vira agendamento.</p>
+                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50 hover:border-emerald-500/50 transition-colors">
+                    <div class="text-emerald-400 mt-1 shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></div>
+                    <p class="text-slate-300">Quer ter <strong>clareza exata</strong> de onde estão os gargalos que estão travando a entrada de novos pacientes hoje.</p>
+                </div>
+                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50 hover:border-emerald-500/50 transition-colors">
+                    <div class="text-emerald-400 mt-1 shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
+                    <p class="text-slate-300">Está pronto para parar de "tentar" e construir um sistema <strong>previsível, escalável e profissional</strong>.</p>
                 </div>
             </div>
-            <div class="text-center bg-slate-800 p-6 rounded-2xl border border-dashed border-slate-700">
-                <p class="text-lg md:text-xl font-medium text-emerald-400">
-                    Se você se identificou com pelo menos dois desses pontos, essa sessão foi pensada para você.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO PROPOSTA -->
-    <section class="py-16 md:py-24 bg-white text-center">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-4">O marketing funciona. O que falta é estrutura.</h2>
-            <p class="text-emerald-600 font-extrabold text-lg md:text-xl uppercase tracking-wider mb-8">Marketing bem-feito traz pacientes. Isso é fato.</p>
-            <div class="text-base md:text-xl text-slate-600 leading-relaxed mb-8 max-w-2xl mx-auto space-y-4 text-left">
-                <p>Isso acontece quando ele é construído com estratégia, não com achismo.</p>
-                <p>O problema não é o marketing em si. É tentar fazer sozinho, sem saber qual pilar ajustar primeiro.</p>
-                <p class="font-bold text-slate-900 text-center text-lg md:text-xl pt-2">
-                    Você <span class="underline text-emerald-600">não precisa</span> virar influenciador nem produzir conteúdo o dia inteiro.
-                </p>
+            
+            <div class="text-center mt-8">
+                <span class="inline-block bg-emerald-500/20 text-emerald-400 px-6 py-2 rounded-full font-semibold border border-emerald-500/30">
+                    Se você se identificou, o que falta não é esforço. É estrutura.
+                </span>
             </div>
         </div>
     </section>
 
-    <!-- OS PILARES -->
+    <!-- A SOLUÇÃO LÓGICA (PILARES) -->
     <section class="py-16 md:py-24 bg-slate-50">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-4">O crescimento do seu consultório depende de um sistema.</h2>
-                <p class="text-slate-600 text-base md:text-lg">Desenvolvi um método com <strong>3 pilares fundamentais</strong> focado no que gera resultado real.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Apresento o Método MÉV</h2>
+                <p class="text-slate-600 text-lg">Um sistema focado unicamente em uma resposta: <strong>Isso traz pacientes ou não?</strong> Na nossa sessão, vamos alinhar esses 3 pilares para o seu consultório:</p>
             </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <span class="inline-block bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md mb-4">Pilar 1</span>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-emerald-500 transition-colors group">
+                    <span class="inline-block bg-slate-100 text-slate-800 group-hover:bg-emerald-100 group-hover:text-emerald-800 transition-colors text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md mb-4">Pilar 1</span>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">Posicionamento</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Sua mensagem precisa comunicar valor imediatamente, para o paciente certo se reconhecer.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">Sua mensagem precisa ancorar autoridade de imediato. Faremos com que o paciente certo bata o olho e pense: <em>"É desse profissional que eu preciso"</em>.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <span class="inline-block bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md mb-4">Pilar 2</span>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Anúncios</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Atrair, de forma inteligente, pessoas com intenção real de iniciar terapia — não apenas curiosos.</p>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-emerald-500 transition-colors group">
+                    <span class="inline-block bg-slate-100 text-slate-800 group-hover:bg-emerald-100 group-hover:text-emerald-800 transition-colors text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md mb-4">Pilar 2</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Atração Inteligente</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Não queremos seguidores curiosos. Vamos estruturar campanhas que apareçam para quem já está buscando ajuda e tem intenção real de pagar por terapia.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <span class="inline-block bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md mb-4">Pilar 3</span>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Comercial</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Transformar interesse em consulta agendada, com um processo claro do primeiro contato até a marcação.</p>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-emerald-500 transition-colors group">
+                    <span class="inline-block bg-slate-100 text-slate-800 group-hover:bg-emerald-100 group-hover:text-emerald-800 transition-colors text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md mb-4">Pilar 3</span>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Comercial Forte</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">De nada adianta o paciente chamar no WhatsApp se ele não agenda. Implementaremos um processo claro de atendimento que transforma interesse em consulta marcada.</p>
                 </div>
-            </div>
-            <div class="text-center pt-4">
-                <p class="text-xl md:text-2xl font-extrabold text-slate-900">MÉV — Método de Escala Validada por André Nunes</p>
             </div>
         </div>
     </section>
 
-    <!-- ENTREGA E CHAMADA FINAL -->
+    <!-- OFERTA DA SESSÃO E FAQ -->
     <section class="py-16 md:py-24 bg-white border-t border-slate-100">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl md:text-4xl font-bold text-center text-slate-900 mb-12">Como vai funcionar a nossa entrega estratégica</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-6">O que você leva na Sessão de Diagnóstico?</h2>
+            <p class="text-center text-slate-600 mb-10 text-lg">
+                É um encontro individual, online e comigo. Vamos abrir a "caixa preta" do seu consultório.
+            </p>
             
-            <div class="bg-slate-50 rounded-2xl border border-slate-100 p-6 md:p-8 space-y-6 mb-10">
-                <div class="flex gap-4 items-start pb-6 border-b border-slate-200/60">
-                    <div class="bg-emerald-500 text-white rounded-full p-1 mt-0.5 shrink-0">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            <div class="bg-emerald-50/50 rounded-2xl border border-emerald-100 p-6 md:p-8 space-y-6 mb-16">
+                <div class="flex gap-4 items-start pb-6 border-b border-emerald-200/60">
+                    <div class="bg-emerald-600 text-white rounded-full p-1.5 mt-0.5 shrink-0">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     <div>
-                        <h4 class="text-lg font-bold text-slate-900">Sessão Individual de Diagnóstico comigo</h4>
-                        <p class="text-slate-600 text-sm mt-1">Direcionamento estratégico personalizado para os 3 pilares do Método Mév.</p>
+                        <h4 class="text-xl font-bold text-slate-900">1. Reunião Estratégica Individual</h4>
+                        <p class="text-slate-600 mt-1">Análise minuciosa de onde você está errando e o que precisa apertar nos seus pilares hoje para ter retorno rápido.</p>
                     </div>
                 </div>
                 <div class="flex gap-4 items-start">
-                    <div class="bg-emerald-500 text-white rounded-full p-1 mt-0.5 shrink-0">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    <div class="bg-emerald-600 text-white rounded-full p-1.5 mt-0.5 shrink-0">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     <div>
-                        <h4 class="text-lg font-bold text-slate-900">Bônus: Pacote de Aulas Gravadas</h4>
-                        <p class="text-slate-600 text-sm mt-1">Acesso para implementar o plano estratégico no seu próprio ritmo.</p>
+                        <h4 class="text-xl font-bold text-slate-900">2. Bônus: Pacote de Aulas Gravadas</h4>
+                        <p class="text-slate-600 mt-1">Material complementar tático para você executar, no seu tempo, exatamente o plano que criarmos na nossa reunião.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="text-center">
-                <a href="https://api.whatsapp.com/send?phone=5521971193493&text=Ol%C3%A1%20Andr%C3%A9!%20Estava%20na%20p%C3%A1gina%20da%20Sess%C3%A3o%20de%20Diagn%C3%B3stico%20e%20gostaria%20de%20receber%20minha%20condi%C3%A7%C3%A3o%20especial." target="_blank" class="inline-block w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white text-base md:text-lg font-bold uppercase tracking-wider px-8 py-5 rounded-xl shadow-lg shadow-emerald-600/20 transition-all transform hover:-translate-y-0.5 text-center">
-                    Quero minha condição especial no WhatsApp
+            <!-- FAQ SECTION -->
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-8">Dúvidas Frequentes</h2>
+            <div class="space-y-4 mb-16">
+                <details class="group bg-slate-50 p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
+                    <summary class="font-bold text-lg text-slate-900 list-none flex justify-between items-center outline-none">
+                        A sessão é em grupo ou individual?
+                        <span class="transition-transform group-open:rotate-180 text-emerald-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200">100% individual. Sou eu e você no Zoom (ou Google Meet) focados no seu negócio. Não é aula gravada ou turma.</p>
+                </details>
+                
+                <details class="group bg-slate-50 p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
+                    <summary class="font-bold text-lg text-slate-900 list-none flex justify-between items-center outline-none">
+                        Quanto tempo dura o diagnóstico?
+                        <span class="transition-transform group-open:rotate-180 text-emerald-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200">Reservamos entre 45 a 60 minutos para passar por toda a estrutura e traçar o seu plano de ação.</p>
+                </details>
+
+                <details class="group bg-slate-50 p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
+                    <summary class="font-bold text-lg text-slate-900 list-none flex justify-between items-center outline-none">
+                        Serve para recém-formados?
+                        <span class="transition-transform group-open:rotate-180 text-emerald-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200">Sim. Inclusive, é o melhor momento. Estruturar o posicionamento e o comercial do jeito certo desde o início poupa meses de frustração e gastos desnecessários.</p>
+                </details>
+
+                <details class="group bg-slate-50 p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
+                    <summary class="font-bold text-lg text-slate-900 list-none flex justify-between items-center outline-none">
+                        Preciso investir muito em anúncios agora?
+                        <span class="transition-transform group-open:rotate-180 text-emerald-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200">Não. Nosso primeiro passo é arrumar a "casa" (seu posicionamento e comercial). Escalar em anúncios é o passo seguinte, que faremos com inteligência.</p>
+                </details>
+            </div>
+
+            <!-- FECHAMENTO E GARANTIA -->
+            <div class="text-center bg-slate-900 p-8 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden">
+                <!-- Efeito visual de fundo -->
+                <div class="absolute top-0 right-0 -mr-10 -mt-10 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -ml-10 -mb-10 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl"></div>
+                
+                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-4 relative z-10">Qual é o seu próximo passo?</h3>
+                <p class="text-slate-300 mb-8 max-w-lg mx-auto relative z-10">
+                    Como as sessões são individuais, eu abro poucas vagas por semana. Clique abaixo para me chamar no WhatsApp e garantir a sua condição especial de hoje.
+                </p>
+                
+                <a href="https://api.whatsapp.com/send?phone=5521971193493&text=Ol%C3%A1%20Andr%C3%A9!%20Estava%20na%20p%C3%A1gina%20da%20Sess%C3%A3o%20de%20Diagn%C3%B3stico%20e%20gostaria%20de%20receber%20minha%20condi%C3%A7%C3%A3o%20especial." target="_blank" class="inline-block w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-slate-900 text-lg font-extrabold uppercase tracking-widest px-10 py-5 rounded-xl shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all transform hover:scale-105 relative z-10 mb-10">
+                    Falar com André no WhatsApp
                 </a>
+
+                <!-- GARANTIA INCONDICIONAL -->
+                <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 relative z-10 text-left flex flex-col sm:flex-row items-center gap-6">
+                    <div class="bg-white text-slate-900 rounded-full p-3 shrink-0">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-lg mb-1">Garantia Risco Zero</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            A promessa é forte, e eu banco o que digo: Se ao final da nossa Sessão de Diagnóstico você sentir que não fez sentido para você ou não teve clareza do caminho, <strong>eu devolvo 100% do seu investimento na mesma hora</strong>. Sem letras miúdas, continuamos amigos.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-500 text-xs py-8 text-center border-t border-slate-800">
+    <footer class="bg-slate-950 text-slate-500 text-xs py-8 text-center border-t border-slate-900">
         <p>&copy; 2026 André Nunes. Todos os direitos reservados.</p>
     </footer>
 
     <!-- BOTÃO FIXO MOBILE -->
-    <div class="md:hidden fixed bottom-0 left-0 right-0 p-3 bg-white border-t border-slate-200 z-50 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
-        <a href="https://api.whatsapp.com/send?phone=5521971193493&text=Ol%C3%A1%20Andr%C3%A9!%20Estava%20na%20p%C3%A1gina%20da%20Sess%C3%A3o%20de%20Diagn%C3%B3stico%20e%20gostaria%20de%20receber%20minha%20condi%C3%A7%C3%A3o%20especial." target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center text-sm font-bold uppercase tracking-wider py-3.5 rounded-lg shadow-md">
-            Quero minha vaga com condição especial
+    <div class="md:hidden fixed bottom-0 left-0 right-0 p-3 bg-white border-t border-slate-200 z-50 shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
+        <a href="https://api.whatsapp.com/send?phone=5521971193493&text=Ol%C3%A1%20Andr%C3%A9!%20Estava%20na%20p%C3%A1gina%20da%20Sess%C3%A3o%20de%20Diagn%C3%B3stico%20e%20gostaria%20de%20receber%20minha%20condi%C3%A7%C3%A3o%20especial." target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center text-sm font-bold uppercase tracking-wider py-4 rounded-xl shadow-md">
+            Quero minha vaga pelo WhatsApp
         </a>
     </div>
 
