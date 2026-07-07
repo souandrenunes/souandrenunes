@@ -8,6 +8,40 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* Container especial estilo VSL para o Google Drive */
+        .vsl-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporção 16:9 */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        .vsl-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Container para os depoimentos em formato vertical (9:16) */
+        .shorts-container {
+            position: relative;
+            padding-bottom: 177.77%; /* Proporção 9:16 */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        .shorts-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-emerald-500 selection:text-white">
@@ -35,13 +69,10 @@
                 </p>
             </div>
 
-            <!-- VSL PLAYER FORMAT (DIRECT LINK GOOGLE DRIVE) -->
+            <!-- VSL PLAYER EMBED CORRIGIDO -->
             <div class="max-w-4xl mx-auto mb-10 shadow-2xl rounded-2xl overflow-hidden border-4 border-slate-900 bg-black">
-                <div class="relative w-full aspect-video bg-black">
-                    <video class="w-full h-full object-cover" controls controlsList="nodownload" preload="metadata">
-                        <source src="https://docs.google.com/uc?export=download&id=1Qu9x79r3F3mv6V5uGpI2pzg9zgNF2QiF" type="video/mp4">
-                        Seu navegador não suporta a exibição deste vídeo.
-                    </video>
+                <div class="vsl-container">
+                    <iframe src="https://drive.google.com/file/d/1Qu9x79r3F3mv6V5uGpI2pzg9zgNF2QiF/preview" allow="autoplay"></iframe>
                 </div>
             </div>
 
@@ -64,24 +95,24 @@
             </h2>
             <p class="text-center text-slate-600 mb-10">Veja o que acontece quando você aplica estratégia no seu consultório:</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-md md:max-w-xl mx-auto">
                 <!-- Depoimento 1 -->
-                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-black aspect-[9/16]">
-                    <video class="w-full h-full object-cover" controls controlsList="nodownload" preload="metadata">
-                        <source src="https://docs.google.com/uc?export=download&id=17JdTjg3911qcc6Gr7-oxQS1gIPPTXGQt" type="video/mp4">
-                    </video>
+                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-black">
+                    <div class="shorts-container">
+                        <iframe src="https://drive.google.com/file/d/17JdTjg3911qcc6Gr7-oxQS1gIPPTXGQt/preview"></iframe>
+                    </div>
                 </div>
                 <!-- Depoimento 2 -->
-                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-black aspect-[9/16]">
-                    <video class="w-full h-full object-cover" controls controlsList="nodownload" preload="metadata">
-                        <source src="https://docs.google.com/uc?export=download&id=1l_1i9_V6Laf_3DQKVKc5Rvtq7kIFULCF" type="video/mp4">
-                    </video>
+                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-black">
+                    <div class="shorts-container">
+                        <iframe src="https://drive.google.com/file/d/1l_1i9_V6Laf_3DQKVKc5Rvtq7kIFULCF/preview"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- HISTÓRIA (RESUMIDA E CONECTIVA) -->
+    <!-- HISTÓRIA -->
     <section class="py-16 md:py-24 bg-white">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -95,9 +126,7 @@
                     </h2>
                     <div class="text-base md:text-lg text-slate-600 space-y-4 leading-relaxed">
                         <p>Minha paixão por esse mercado começou de um jeito inusitado: assistindo <strong>Mad Men</strong>, uma série sobre os gigantes da publicidade de Nova York nos anos 60.</p>
-                        
                         <p>Observando as tramas da agência, uma ficha pesada caiu. Eu percebi que marketing não era sobre empurrar produtos goela abaixo. <strong>Era sobre percepção, narrativa e comportamento humano.</strong></p>
-                        
                         <p>Isso me fez entrar na faculdade. Mas a realidade bateu forte: eu era absurdamente tímido, não sabia me expressar e estava completamente perdido no jogo.</p>
                         
                         <div class="border-l-4 border-emerald-500 pl-5 py-2 my-6 bg-slate-50 rounded-r-xl">
@@ -107,15 +136,14 @@
                         </div>
                         
                         <p>Quando apliquei isso, mudei minha postura e desenvolvi um método sólido. Saí da faculdade com voz, presença e foco estratégico.</p>
-                        
-                        <p>Hoje, meu trabalho é pegar essa mesma clareza e instalar no seu consultório. Sem fórmulas mágicas, sem "hacks" de internet. Apenas posicionamento estruturado para que o paciente certo perceba o seu valor antes mesmo da primeira consulta.</p>
+                        <p>Hoje, meu trabalho é pegar essa mesma clareza e instalar no seu consultório. Sem fórmulas mágicas. Apenas posicionamento estruturado para que o paciente certo perceba o seu valor antes mesmo da primeira consulta.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- AGITAÇÃO DA DOR (O PROBLEMA DO PSI) -->
+    <!-- AGITAÇÃO DA DOR -->
     <section class="py-16 md:py-24 bg-slate-900 text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">A invisibilidade é o maior inimigo do Psi excelente.</h2>
@@ -148,7 +176,7 @@
         </div>
     </section>
 
-    <!-- A SOLUÇÃO LÓGICA (PILARES) -->
+    <!-- PILARES -->
     <section class="py-16 md:py-24 bg-slate-50">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -179,13 +207,11 @@
         </div>
     </section>
 
-    <!-- OFERTA DA SESSÃO E FAQ -->
+    <!-- OFERTA E FAQ -->
     <section class="py-16 md:py-24 bg-white border-t border-slate-100">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-6">O que você leva na Sessão de Diagnóstico?</h2>
-            <p class="text-center text-slate-600 mb-10 text-lg">
-                É um encontro individual, online e direto comigo. Vamos abrir a "caixa preta" do seu negócio.
-            </p>
+            <p class="text-center text-slate-600 mb-10 text-lg">É um encontro individual, online e direto comigo. Vamos abrir a "caixa preta" do seu negócio.</p>
             
             <div class="bg-emerald-50/50 rounded-2xl border border-emerald-100 p-6 md:p-8 space-y-6 mb-16">
                 <div class="flex gap-4 items-start pb-6 border-b border-emerald-200/60">
@@ -224,7 +250,7 @@
                         Quanto tempo dura o diagnóstico?
                         <span class="transition-transform group-open:rotate-180 text-emerald-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
                     </summary>
-                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200">Reservamos entre 45 a 60 minutes para passar por toda a sua estrutura atual e traçar o seu plano de ação.</p>
+                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200">Reservamos entre 45 a 60 minutos para passar por toda a sua estrutura atual e traçar o seu plano de ação.</p>
                 </details>
 
                 <details class="group bg-slate-50 p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
@@ -246,21 +272,18 @@
 
             <!-- FECHAMENTO, BOTÃO FINAL E GARANTIA INCONDICIONAL -->
             <div class="text-center bg-slate-900 p-8 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden">
-                <!-- Efeito visual de fundo -->
                 <div class="absolute top-0 right-0 -mr-10 -mt-10 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl"></div>
                 <div class="absolute bottom-0 left-0 -ml-10 -mb-10 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl"></div>
                 
                 <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-4 relative z-10">Qual é o seu próximo passo?</h3>
-                <p class="text-slate-300 mb-8 max-w-lg mx-auto relative z-10">
-                    Como as sessões são individuais e personalizadas, eu abro poucas vagas por semana. Clique abaixo para garantir sua vaga com condição especial hoje.
-                </p>
+                <p class="text-slate-300 mb-8 max-w-lg mx-auto relative z-10">Como as sessões são individuais e personalizadas, eu abro poucas vagas por semana. Clique abaixo para garantir sua vaga com condição especial hoje.</p>
                 
-                <!-- ÚLTIMO BOTÃO 1 (CHAMADA PRINCIPAL) -->
+                <!-- ÚLTIMO BOTÃO 1 -->
                 <a href="https://api.whatsapp.com/send?phone=5521971193493&text=Ol%C3%A1%20Andr%C3%A9!%20Estava%20na%20p%C3%A1gina%20da%20Sess%C3%A3o%20de%20Diagn%C3%B3stico%20e%20gostaria%20de%20receber%20minha%20condi%C3%A7%C3%A3o%20especial." target="_blank" class="inline-block w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-slate-900 text-lg font-extrabold uppercase tracking-widest px-10 py-5 rounded-xl shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all transform hover:scale-105 relative z-10 mb-10">
                     Falar com André no WhatsApp
                 </a>
 
-                <!-- GARANTIA INCONDICIONAL (LOGICAMENTE ABAIXO DO BOTÃO 1) -->
+                <!-- GARANTIA INCONDICIONAL -->
                 <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 relative z-10 text-left flex flex-col sm:flex-row items-center gap-6">
                     <div class="bg-white text-slate-900 rounded-full p-3 shrink-0">
                         <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
