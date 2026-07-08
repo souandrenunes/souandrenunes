@@ -9,38 +9,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        /* Container especial estilo VSL para o Google Drive */
-        .vsl-container {
-            position: relative;
-            padding-bottom: 56.25%; /* Proporção 16:9 */
-            height: 0;
-            overflow: hidden;
-            background: #000;
-        }
-        .vsl-container iframe {
+        /* Camada invisível de segurança para cliques acidentais na barra do Drive */
+        .video-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* Container para os depoimentos em formato vertical (9:16) */
-        .shorts-container {
-            position: relative;
-            padding-bottom: 177.77%; /* Proporção 9:16 */
-            height: 0;
-            overflow: hidden;
-            background: #000;
-        }
-        .shorts-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+            height: 45px;
+            z-index: 10;
+            background: transparent;
         }
     </style>
 </head>
@@ -59,35 +36,31 @@
                     Diagnóstico Estratégico Individual
                 </span>
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
-                    A sua competência clínica não vai lotar a sua agenda sozinha.
+                    A sua competência clínica não vai transformar seu consultório em um negócio lucrativo sozinha.
                 </h1>
                 <p class="text-xl md:text-2xl font-medium text-slate-600 leading-snug mb-6">
-                    Descubra o sistema para atrair de <strong class="text-emerald-600">10 a 30 potenciais pacientes toda semana</strong>, sem depender de indicações ou dancinhas no Instagram.
+                    Eu ajudo psicólogos e terapeutas a estruturarem a base de atração da sua clínica para receberem de <strong class="text-emerald-600">10 a 30 potenciais pacientes por semana</strong> direto no WhatsApp, prontos para conversar sobre seu atendimento. O fim da dependência de indicações e o início de um negócio previsível.
                 </p>
                 <p class="text-xs md:text-sm font-bold uppercase tracking-widest text-emerald-600 animate-pulse mb-2">
                     Aperte o play e entenda o método ↓
                 </p>
             </div>
 
-            <!-- VSL PLAYER EMBED CORRIGIDO -->
-            <div class="max-w-4xl mx-auto mb-10 shadow-2xl rounded-2xl overflow-hidden border-4 border-slate-900 bg-black">
-                <div class="vsl-container">
-                    <iframe src="https://drive.google.com/file/d/1Qu9x79r3F3mv6V5uGpI2pzg9zgNF2QiF/preview" allow="autoplay"></iframe>
-                </div>
+            <!-- VSL PLAYER EMBED SEM CORTES -->
+            <div class="max-w-4xl mx-auto mb-10 shadow-2xl rounded-2xl overflow-hidden border-4 border-slate-900 bg-black relative aspect-video">
+                <div class="video-overlay"></div>
+                <iframe src="https://drive.google.com/file/d/1Qu9x79r3F3mv6V5uGpI2pzg9zgNF2QiF/preview" class="w-full h-full object-contain" allow="autoplay"></iframe>
             </div>
 
             <div class="text-center mt-8">
-                <a href="https://api.whatsapp.com/send?phone=5521971193493&text=Ol%C3%A1%20Andr%C3%A9!%20Estava%20na%20p%C3%A1gina%20da%20Sess%C3%A3o%20de%20Diagn%C3%B3stico%20e%20gostaria%20de%20receber%20minha%20condi%C3%A7%C3%A3o%20especial." target="_blank" class="inline-block w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white text-base md:text-lg font-bold uppercase tracking-wider px-8 py-5 rounded-xl shadow-[0_8px_30px_rgb(16,185,129,0.3)] transition-all transform hover:-translate-y-1 text-center">
-                    Quero minha vaga com condição especial
+                <a href="#oferta-unificada" class="inline-block w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white text-base md:text-lg font-bold uppercase tracking-wider px-8 py-5 rounded-xl shadow-[0_8px_30px_rgb(16,185,129,0.3)] transition-all transform hover:-translate-y-1 text-center">
+                    Garantir Vaga com Desconto Especial
                 </a>
-                <p class="text-xs font-medium text-slate-400 mt-4 uppercase tracking-widest">
-                    Direto no WhatsApp • 100% Seguro
-                </p>
             </div>
         </div>
     </section>
 
-    <!-- SOCIAL PROOF (DEPOIMENTOS) -->
+    <!-- SOCIAL PROOF (DEPOIMENTOS INTACTOS S/ CORTE) -->
     <section class="py-16 bg-slate-50 border-b border-slate-200">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-2">
@@ -95,39 +68,42 @@
             </h2>
             <p class="text-center text-slate-600 mb-10">Veja o que acontece quando você aplica estratégia no seu consultório:</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-md md:max-w-xl mx-auto">
-                <!-- Depoimento 1 -->
-                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-black">
-                    <div class="shorts-container">
-                        <iframe src="https://drive.google.com/file/d/17JdTjg3911qcc6Gr7-oxQS1gIPPTXGQt/preview"></iframe>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-sm md:max-w-2xl mx-auto mb-10">
+                <!-- Depoimento 1 - Proporção de Tela Cheia Garantida -->
+                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-black relative aspect-[9/16]">
+                    <div class="video-overlay"></div>
+                    <iframe src="https://drive.google.com/file/d/17JdTjg3911qcc6Gr7-oxQS1gIPPTXGQt/preview" class="w-full h-full object-contain"></iframe>
                 </div>
-                <!-- Depoimento 2 -->
-                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-black">
-                    <div class="shorts-container">
-                        <iframe src="https://drive.google.com/file/d/1l_1i9_V6Laf_3DQKVKc5Rvtq7kIFULCF/preview"></iframe>
-                    </div>
+                <!-- Depoimento 2 - Proporção de Tela Cheia Garantida -->
+                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-black relative aspect-[9/16]">
+                    <div class="video-overlay"></div>
+                    <iframe src="https://drive.google.com/file/d/1l_1i9_V6Laf_3DQKVKc5Rvtq7kIFULCF/preview" class="w-full h-full object-contain"></iframe>
                 </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#oferta-unificada" class="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 hover:text-emerald-700 uppercase tracking-wider transition-colors">
+                    Ver Condição Especial da Sessão ↓
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- HISTÓRIA -->
+    <!-- HISTÓRIA / POSICIONAMENTO -->
     <section class="py-16 md:py-24 bg-white">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
                 <div class="max-w-sm mx-auto md:max-w-none w-full shadow-2xl rounded-2xl overflow-hidden border-4 border-slate-50">
                     <img src="eu.jpg" alt="André Nunes" class="w-full h-auto object-cover aspect-[3/4]">
                 </div>
                 <div class="space-y-6">
                     <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest block">Muito Prazer, André Nunes</span>
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
-                        De tímido a estrategista: a regra de ouro que mudou meu jogo.
+                        De vendedor de trufas na rua a estrategista de negócios para clínicas e consultórios.
                     </h2>
                     <div class="text-base md:text-lg text-slate-600 space-y-4 leading-relaxed">
-                        <p>Minha paixão por esse mercado começou de um jeito inusitado: assistindo <strong>Mad Men</strong>, uma série sobre os gigantes da publicidade de Nova York nos anos 60.</p>
-                        <p>Observando as tramas da agência, uma ficha pesada caiu. Eu percebi que marketing não era sobre empurrar produtos goela abaixo. <strong>Era sobre percepção, narrativa e comportamento humano.</strong></p>
-                        <p>Isso me fez entrar na faculdade. Mas a realidade bateu forte: eu era absurdamente tímido, não sabia me expressar e estava completamente perdido no jogo.</p>
+                        <p>Minha jornada no mercado digital começou em outubro de 2020. Mas antes de gerenciar mais de 2 milhões de reais em tráfego e participar de lançamentos de grandes Players do mercado, minha realidade era outra: no final de 2019, eu vendia trufas na rua para conseguir pagar a passagem de ônibus e o xerox da faculdade.</p>
+                        <p>Eu aprendi na pele que você pode ter o melhor conhecimento do mundo, mas se não souber se posicionar para o público certo, seu consultório não se sustenta. A minha grande virada de chave aconteceu quando eu fechei um cliente de R$ 4.500 e, logo em seguida, ele cancelou. Ali eu entendi o peso da <strong>falta de previsibilidade</strong>. Eu não tinha um negócio previsível; eu vivia no susto.</p>
                         
                         <div class="border-l-4 border-emerald-500 pl-5 py-2 my-6 bg-slate-50 rounded-r-xl">
                             <p class="font-bold text-slate-900 italic">
@@ -135,181 +111,253 @@
                             </p>
                         </div>
                         
-                        <p>Quando apliquei isso, mudei minha postura e desenvolvi um método sólido. Saí da faculdade com voz, presença e foco estratégico.</p>
-                        <p>Hoje, meu trabalho é pegar essa mesma clareza e instalar no seu consultório. Sem fórmulas mágicas. Apenas posicionamento estruturado para que o paciente certo perceba o seu valor antes mesmo da primeira consulta.</p>
+                        <p>Foi criando o <strong>Método Zero ao Consultório</strong> que eu mudei o jogo. Hoje, meu trabalho é pegar essa mesma clareza comercial e instalar no seu consultório. Para que você pare de apenas "esperar o telefone tocar" e passe a liderar um negócio estruturado, onde o paciente certo percebe o seu valor antes mesmo de dar um "oi" no WhatsApp.</p>
                     </div>
                 </div>
             </div>
+            
+            <div class="text-center">
+                <a href="#oferta-unificada" class="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 hover:text-emerald-700 uppercase tracking-wider transition-colors">
+                    Ver Condição Especial da Sessão ↓
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- AGITAÇÃO DA DOR -->
+    <!-- PARA QUEM É -->
     <section class="py-16 md:py-24 bg-slate-900 text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">A invisibilidade é o maior inimigo do Psi excelente.</h2>
-            <p class="text-center text-slate-400 mb-12 text-lg">Essa sessão foi desenhada exclusivamente para você que:</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Para quem é</h2>
+            <p class="text-center text-slate-400 mb-12 text-lg">Psicólogos e terapeutas que decidiram parar de tratar seus consultórios de forma informal e querem construir uma estrutura de atendimento com faturamento previsível.</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50 hover:border-emerald-500/50 transition-colors">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50">
                     <div class="text-emerald-400 mt-1 shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg></div>
-                    <p class="text-slate-300">Tem extrema competência clínica, mas passa o mês tenso porque a <strong>sua agenda depende de indicações</strong> (que são imprevisíveis).</p>
+                    <div>
+                        <h4 class="font-bold text-white mb-1">Ansiedade com o fim do mês</h4>
+                        <p class="text-slate-300 text-sm">Você tem uma competência clínica excelente, mas passa os dias tenso porque sua agenda depende de indicações — e indicações são imprevisíveis.</p>
+                    </div>
                 </div>
-                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50 hover:border-emerald-500/50 transition-colors">
+                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50">
                     <div class="text-emerald-400 mt-1 shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg></div>
-                    <p class="text-slate-300">Sabe que precisa do digital, até posta no Instagram, mas já percebeu que <strong>curtidas e views não pagam os boletos</strong> do consultório.</p>
+                    <div>
+                        <h4 class="font-bold text-white mb-1">Desconexão de Valor</h4>
+                        <p class="text-slate-300 text-sm">Você percebe que as pessoas até chegam a perguntar o seu preço, mas somem logo em seguida porque ainda não entenderam o real valor do seu acompanhamento.</p>
+                    </div>
                 </div>
-                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50 hover:border-emerald-500/50 transition-colors">
+                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50">
                     <div class="text-emerald-400 mt-1 shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></div>
-                    <p class="text-slate-300">Quer ter <strong>clareza exata</strong> de onde estão os gargalos que estão travando a entrada de novos pacientes hoje.</p>
+                    <div>
+                        <h4 class="font-bold text-white mb-1">Falta de Processo Claro</h4>
+                        <p class="text-slate-300 text-sm">Você quer construir a estrutura certa para atrair pacientes particulares toda semana, mas se sente perdido sobre qual passo dar primeiro para organizar o consultório como um negócio.</p>
+                    </div>
                 </div>
-                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50 hover:border-emerald-500/50 transition-colors">
+                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50">
                     <div class="text-emerald-400 mt-1 shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
-                    <p class="text-slate-300">Está pronto para parar de "tentar" e construir um sistema <strong>previsível, escalável e profissional</strong>.</p>
+                    <div>
+                        <h4 class="font-bold text-white mb-1">Desejo de Escala</h4>
+                        <p class="text-slate-300 text-sm">Você quer parar de trocar apenas horas por dinheiro e deseja ter um fluxo consistente de contatos chegando para poder escolher quem atender e quanto cobrar.</p>
+                    </div>
                 </div>
             </div>
-            
-            <div class="text-center mt-8">
-                <span class="inline-block bg-emerald-500/20 text-emerald-400 px-6 py-2 rounded-full font-semibold border border-emerald-500/30">
-                    Se você se identificou, o que falta não é esforço. É estrutura.
-                </span>
+
+            <div class="text-center">
+                <a href="#oferta-unificada" class="inline-flex items-center gap-2 text-sm font-bold text-emerald-400 hover:text-emerald-300 uppercase tracking-wider transition-colors">
+                    Ver Condição Especial da Sessão ↓
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- PILARES -->
+    <!-- O MÉTODO -->
     <section class="py-16 md:py-24 bg-slate-50">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Apresento o Método MÉV</h2>
-                <p class="text-slate-600 text-lg">Um sistema focado unicamente em uma resposta: <strong>Isso traz pacientes ou não?</strong> Na nossa sessão, vamos alinhar esses 3 pilares para o seu consultório:</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Apresento o Método Zero ao Consultório</h2>
+                <p class="text-slate-600 text-lg">Um sistema estruturado focado em transformar seu conhecimento clínico em uma estrutura de negócio previsível:</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-emerald-500 transition-colors group">
+                <!-- PILAR 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 group">
                     <span class="inline-block bg-slate-100 text-slate-800 group-hover:bg-emerald-100 group-hover:text-emerald-800 transition-colors text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md mb-4">Pilar 1</span>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Posicionamento</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Sua mensagem precisa ancorar autoridade de imediato. Faremos com que o paciente certo bata o olho e pense: <em>"É desse profissional que eu preciso"</em>.</p>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Posicionamento Estratégico</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Ajustamos sua mensagem, Instagram e Google Meu Negócio para que o mercado entenda exatamente qual dor você resolve e por que você não é "só mais um profissional".</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-emerald-500 transition-colors group">
+                <!-- PILAR 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 group">
                     <span class="inline-block bg-slate-100 text-slate-800 group-hover:bg-emerald-100 group-hover:text-emerald-800 transition-colors text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md mb-4">Pilar 2</span>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Atração Inteligente</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Não queremos seguidores curiosos. Vamos estruturar campanhas que apareçam para quem já está buscando ajuda e tem intenção real de pagar por terapia.</p>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Anúncios Online</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Ativamos o motor de atração. Criamos campanhas direcionadas para trazer as pessoas certas, que precisam da sua ajuda, direto para seu WhatsApp.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-emerald-500 transition-colors group">
+                <!-- PILAR 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 group">
                     <span class="inline-block bg-slate-100 text-slate-800 group-hover:bg-emerald-100 group-hover:text-emerald-800 transition-colors text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md mb-4">Pilar 3</span>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Comercial Forte</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">De nada adianta o paciente chamar no WhatsApp se ele não agenda. Implementaremos um processo claro de atendimento que transforma interesse em consulta marcada.</p>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Comercial e Vendas</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">O treinamento prático para você conduzir conversas éticas no WhatsApp e dominar a Reunião de Diagnóstico, convertendo contatos em pacientes pagantes sem parecer chato.</p>
                 </div>
             </div>
-            <div class="text-center pt-4">
-                <p class="text-xl md:text-2xl font-extrabold text-slate-900">MÉV — Método de Escala Validada por André Nunes</p>
+
+            <div class="text-center">
+                <a href="#oferta-unificada" class="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 hover:text-emerald-700 uppercase tracking-wider transition-colors">
+                    Ver Condição Especial da Sessão ↓
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- OFERTA E FAQ -->
-    <section class="py-16 md:py-24 bg-white border-t border-slate-100">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-6">O que você leva na Sessão de Diagnóstico?</h2>
-            <p class="text-center text-slate-600 mb-10 text-lg">É um encontro individual, online e direto comigo. Vamos abrir a "caixa preta" do seu negócio.</p>
+    <!-- ABA DA OFERTA UNIFICADA (OFERTA + ENTREGÁVEIS NO MESMO BLOCO PREMUM) -->
+    <section id="oferta-unificada" class="py-16 md:py-24 bg-white border-t border-slate-100 scroll-mt-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="bg-emerald-50/50 rounded-2xl border border-emerald-100 p-6 md:p-8 space-y-6 mb-16">
-                <div class="flex gap-4 items-start pb-6 border-b border-emerald-200/60">
-                    <div class="bg-emerald-600 text-white rounded-full p-1.5 mt-0.5 shrink-0">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold text-slate-900">1. Reunião Estratégica Individual</h4>
-                        <p class="text-slate-600 mt-1">Análise minuciosa de onde você está errando e o que precisa apertar nos seus pilares hoje para ter retorno rápido.</p>
-                    </div>
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Seu Plano de Aceleração Completo</h2>
+                <p class="text-slate-600 text-lg">Abaixo está tudo o que está incluso no seu acesso à Sessão de Diagnóstico Estratégico Individual.</p>
+            </div>
+
+            <!-- CONTAINER DE PRODUTO ÚNICO DIGITAL -->
+            <div class="bg-slate-950 text-white rounded-3xl shadow-2xl border border-slate-800 overflow-hidden">
+                
+                <!-- PARTE superior: ELEVAÇÃO DE CONSCIÊNCIA / NARRATIVA DA ANOMALIA -->
+                <div class="p-8 md:p-12 bg-slate-900 border-b border-slate-800/80">
+                    <span class="bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block">
+                        Proposta Exclusiva André Nunes
+                    </span>
+                    <h3 class="text-2xl md:text-3xl font-extrabold mb-4 text-white">Por que estou entregando tanto por um valor tão abaixo do mercado?</h3>
+                    <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+                        Se você procurar por aí, vai encontrar mentorias de negócios ou agências cobrando de R$ 3.000 a R$ 5.000 para te entregar metade disso. Eu sei disso porque venho desse mercado. Mas eu decidi criar uma <strong class="text-emerald-400 font-semibold">oferta que não existe em nenhum outro lugar</strong>: eu te dou o direcionamento individual ao vivo e te entrego todo o kit de ferramentas e scripts prontos para você executar imediatamente. Faço isso porque sei que, assim que você colher os primeiros resultados, vai querer dar os próximos passos comigo. É uma parceria ganha-ganha.
+                    </p>
                 </div>
-                <div class="flex gap-4 items-start">
-                    <div class="bg-emerald-600 text-white rounded-full p-1.5 mt-0.5 shrink-0">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+
+                <!-- CORPO DO PRODUTO: ENTREGÁVEIS INTEGRADOS -->
+                <div class="p-8 md:p-12 space-y-10">
+                    
+                    <!-- PASSO 1 -->
+                    <div class="flex gap-4 items-start pb-6 border-b border-slate-800/60">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 font-bold flex items-center justify-center text-sm shrink-0">1</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white mb-1">PASSO 1: O Raio-X Prévio (Formulário de Inteligência)</h4>
+                            <p class="text-slate-400 text-sm">Antes do nosso encontro, você preenche um formulário exclusivo para eu mapear seu avatar, analisar seus gargalos e desenhar sua estratégia de oferta antes mesmo da nossa reunião.</p>
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="text-xl font-bold text-slate-900">2. Bônus: Pacote de Aulas Gravadas</h4>
-                        <p class="text-slate-600 mt-1">Material complementar tático para você executar, no seu tempo, exatamente o plano que criarmos na nossa reunião.</p>
+
+                    <!-- PASSO 2 -->
+                    <div class="flex gap-4 items-start pb-6 border-b border-slate-800/60">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 font-bold flex items-center justify-center text-sm shrink-0">2</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white mb-1">PASSO 2: Sessão de Diagnóstico Individual (Ao Vivo no Zoom)</h4>
+                            <p class="text-slate-400 text-sm">Um encontro estratégico de 45 a 60 minutos comigo no Zoom focado em traçar o seu plano de escala completo e te dar clareza total dos seus próximos passos práticos.</p>
+                        </div>
                     </div>
+
+                    <!-- PASSO 3 (KIT DE VIDEOAULAS) -->
+                    <div class="flex gap-4 items-start pb-6">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 font-bold flex items-center justify-center text-sm shrink-0">3</div>
+                        <div class="w-full">
+                            <h4 class="text-lg font-bold text-white mb-3">PASSO 3: O Kit de Execução Completo (Aulas Gravadas com Fluxo de Negócio Real)</h4>
+                            <p class="text-slate-400 text-sm mb-4">Materiais gravados complementares para você assistir e aplicar na velocidade do seu negócio:</p>
+                            
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-300 text-xs font-medium">
+                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">1.</span> Estruturação da Oferta Irrecusável de Atendimento</li>
+                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">2.</span> Copywriting Perfeito para Páginas de Conversão</li>
+                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">3.</span> Construção, Hospedagem e Template do seu Site</li>
+                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">4.</span> Otimização Completa de Ficha no Google Meu Negócio</li>
+                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">5.</span> Criação e Configuração Profissional de Conta no Google Ads</li>
+                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">6.</span> Subindo sua Primeira Campanha de Atração no Google Ads</li>
+                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">7.</span> Análise Tática e Otimização Semanal de Resultados</li>
+                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">8.</span> Script de Atendimento Humano para Conversão no WhatsApp</li>
+                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">9.</span> Roteiro de Fechamento de Contratos de Sessão</li>
+                            </ul>
+
+                            <!-- BÔNUS INTEGRADO NA MESMA CARCAÇA -->
+                            <div class="mt-6 pt-6 border-t border-slate-800 flex items-start gap-3 bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                                <span class="bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shrink-0">Bônus Extra</span>
+                                <div>
+                                    <h5 class="font-bold text-white text-sm">10. Aulão: Como saber se meu investimento está indo bem + (Manual do Acompanhamento)</h5>
+                                    <p class="text-slate-400 text-xs mt-1">Um guia prático e analítico para você controlar e acompanhar as métricas financeiras do seu negócio com precisão absoluta.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PREÇO, ANCORAGEM E CHAMADA FINAL (FIM DA SEÇÃO DO PRODUTO) -->
+                    <div class="pt-8 border-t border-slate-800 text-center relative z-10">
+                        <div class="mb-6">
+                            <p class="text-xs text-slate-400 uppercase tracking-widest">Valor de Tabela da Consultoria:</p>
+                            <p class="text-2xl text-slate-500 line-through decoration-red-600 decoration-4 font-bold my-1">R$ 197,00</p>
+                            <p class="text-emerald-400 text-sm font-semibold">Toque abaixo para falar comigo e liberar sua condição de desconto:</p>
+                        </div>
+                        
+                        <!-- BOTÃO WHATSAPP EXCLUSIVO -->
+                        <a href="https://api.whatsapp.com/send?phone=5521971193493&text=Ol%C3%A1%20Andr%C3%A9!%20Estava%20na%20p%C3%A1gina%20da%20Sess%C3%A3o%20de%20Diagn%C3%B3stico%20e%20gostaria%20de%20receber%20meu%20desconto." target="_blank" class="inline-block w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-base md:text-lg font-extrabold uppercase tracking-widest px-8 py-5 rounded-xl shadow-[0_0_40px_rgba(16,185,129,0.3)] transition-all transform hover:scale-105 mb-8">
+                            🟢 Fale agora no WhatsApp para receber seu desconto
+                        </a>
+
+                        <!-- GARANTIA RISCO ZERO DENTRO DO BLOCO -->
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-left flex flex-col sm:flex-row items-center gap-4">
+                            <div class="bg-white/10 text-emerald-400 rounded-full p-2.5 shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm mb-0.5">Garantia Risco Zero</h4>
+                                <p class="text-slate-400 text-xs leading-relaxed">
+                                    Se ao final da nossa Sessão você sentir que não teve clareza ou que o plano tático não serve para a realidade atual do seu consultório, eu devolvo 100% do seu dinheiro na hora. Sem burocracia.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
 
-            <!-- FAQ SECTION -->
+        </div>
+    </section>
+
+    <!-- FAQ SECTION (MOVIDO PARA O FINAL ABSOLUTO DA PÁGINA) -->
+    <section class="py-16 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-8">Dúvidas Frequentes</h2>
-            <div class="space-y-4 mb-16">
-                <details class="group bg-slate-50 p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
-                    <summary class="font-bold text-lg text-slate-900 list-none flex justify-between items-center outline-none">
+            <div class="space-y-4 max-w-3xl mx-auto">
+                <details class="group bg-white p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
+                    <summary class="font-bold text-base md:text-lg text-slate-900 list-none flex justify-between items-center outline-none">
                         A sessão é em grupo ou individual?
                         <span class="transition-transform group-open:rotate-180 text-emerald-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
                     </summary>
-                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200">100% individual. Sou eu e você no Zoom (ou Google Meet) focados no seu negócio. Não é aula gravada ou turma.</p>
+                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200 text-sm">100% individual. Sou eu e você focados no seu negócio. Não é aula gravada compartilhada com uma turma enorme.</p>
                 </details>
                 
-                <details class="group bg-slate-50 p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
-                    <summary class="font-bold text-lg text-slate-900 list-none flex justify-between items-center outline-none">
+                <details class="group bg-white p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
+                    <summary class="font-bold text-base md:text-lg text-slate-900 list-none flex justify-between items-center outline-none">
                         Quanto tempo dura o diagnóstico?
                         <span class="transition-transform group-open:rotate-180 text-emerald-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
                     </summary>
-                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200">Reservamos entre 45 a 60 minutos para passar por toda a sua estrutura atual e traçar o seu plano de ação.</p>
+                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200 text-sm">Reservamos entre 45 a 60 minutos para passar por toda a sua estrutura atual e traçar o seu plano de ação.</p>
                 </details>
 
-                <details class="group bg-slate-50 p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
-                    <summary class="font-bold text-lg text-slate-900 list-none flex justify-between items-center outline-none">
-                        Serve para recém-formados?
+                <details class="group bg-white p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
+                    <summary class="font-bold text-base md:text-lg text-slate-900 list-none flex justify-between items-center outline-none">
+                        Serve para quem está começando do zero?
                         <span class="transition-transform group-open:rotate-180 text-emerald-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
                     </summary>
-                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200">Sim. Inclusive, é o melhor momento. Estruturar o posicionamento e o comercial do jeito certo desde o início poupa meses de frustração e gastos desnecessários no mercado.</p>
+                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200 text-sm">Sim. Inclusive, estruturar o posicionamento e o comercial do jeito certo desde o primeiro dia poupa meses de frustração e gastos desnecessários com palpites do mercado.</p>
                 </details>
 
-                <details class="group bg-slate-50 p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
-                    <summary class="font-bold text-lg text-slate-900 list-none flex justify-between items-center outline-none">
+                <details class="group bg-white p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
+                    <summary class="font-bold text-base md:text-lg text-slate-900 list-none flex justify-between items-center outline-none">
                         Preciso investir muito em anúncios agora?
                         <span class="transition-transform group-open:rotate-180 text-emerald-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
                     </summary>
-                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200">Não. Nosso primeiro passo é arrumar a "casa" (seu posicionamento e script comercial). Escalar em tráfego pago é o passo seguinte, que faremos com inteligência e previsibilidade.</p>
+                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200 text-sm">Não. Nosso primeiro passo é arrumar o seu posicionamento e script comercial. Escalar em tráfego pago é o passo seguinte, feito com inteligência e controle financeiro.</p>
                 </details>
-            </div>
-
-            <!-- FECHAMENTO, BOTÃO FINAL E GARANTIA INCONDICIONAL -->
-            <div class="text-center bg-slate-900 p-8 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 -mr-10 -mt-10 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl"></div>
-                <div class="absolute bottom-0 left-0 -ml-10 -mb-10 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl"></div>
-                
-                <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-4 relative z-10">Qual é o seu próximo passo?</h3>
-                <p class="text-slate-300 mb-8 max-w-lg mx-auto relative z-10">Como as sessões são individuais e personalizadas, eu abro poucas vagas por semana. Clique abaixo para garantir sua vaga com condição especial hoje.</p>
-                
-                <!-- ÚLTIMO BOTÃO 1 -->
-                <a href="https://api.whatsapp.com/send?phone=5521971193493&text=Ol%C3%A1%20Andr%C3%A9!%20Estava%20na%20p%C3%A1gina%20da%20Sess%C3%A3o%20de%20Diagn%C3%B3stico%20e%20gostaria%20de%20receber%20minha%20condi%C3%A7%C3%A3o%20especial." target="_blank" class="inline-block w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-slate-900 text-lg font-extrabold uppercase tracking-widest px-10 py-5 rounded-xl shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all transform hover:scale-105 relative z-10 mb-10">
-                    Falar com André no WhatsApp
-                </a>
-
-                <!-- GARANTIA INCONDICIONAL -->
-                <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 relative z-10 text-left flex flex-col sm:flex-row items-center gap-6">
-                    <div class="bg-white text-slate-900 rounded-full p-3 shrink-0">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                    <div>
-                        <h4 class="text-white font-bold text-lg mb-1">Garantia Risco Zero</h4>
-                        <p class="text-slate-300 text-sm leading-relaxed">
-                            A promessa é forte, e eu banco o que digo: Se ao final da nossa Sessão de Diagnóstico você sentir que não fez sentido para você ou não teve clareza do caminho, <strong>eu devolvo 100% do seu investimento na mesma hora</strong>. Sem letras miúdas, continuamos amigos.
-                        </p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-950 text-slate-500 text-xs py-8 text-center border-t border-slate-100">
+    <footer class="bg-slate-950 text-slate-500 text-xs py-8 text-center border-t border-slate-900">
         <p>&copy; 2026 André Nunes. Todos os direitos reservados.</p>
     </footer>
-
-    <!-- BOTÃO FIXO MOBILE -->
-    <div class="md:hidden fixed bottom-0 left-0 right-0 p-3 bg-white border-t border-slate-200 z-50 shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
-        <a href="https://api.whatsapp.com/send?phone=5521971193493&text=Ol%C3%A1%20Andr%C3%A9!%20Estava%20na%20p%C3%A1gina%20da%20Sess%C3%A3o%20de%20Diagn%C3%B3stico%20e%20gostaria%20de%20receber%20minha%20condi%C3%A7%C3%A3o%20especial." target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center text-sm font-bold uppercase tracking-wider py-4 rounded-xl shadow-md">
-            Quero minha vaga pelo WhatsApp
-        </a>
-    </div>
 
 </body>
 </html>
