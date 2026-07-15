@@ -73,16 +73,15 @@
             transform: translateY(-4px) rotateX(-35deg) scaleY(0.85);
         }
 
-        /* Classe de partículas (Apenas Moedas de Ouro em Câmera Lenta) */
+        /* Classe das Moedas de Ouro desenhadas em vetor (Câmera Lenta) */
         .gold-coin {
             position: absolute;
             pointer-events: none;
             z-index: 9999;
-            filter: drop-shadow(0 3px 6px rgba(251, 191, 36, 0.6));
-            animation: shoot-gold-money 4.2s cubic-bezier(0.1, 0.8, 0.25, 1) forwards; /* Velocidade reduzida para efeito suave */
+            animation: shoot-gold-money 4.5s cubic-bezier(0.1, 0.8, 0.25, 1) forwards;
         }
 
-        /* Física ultra suave e lenta de dispersão de moedas */
+        /* Física ultra suave de dispersão de moedas */
         @keyframes shoot-gold-money {
             0% {
                 opacity: 0;
@@ -214,7 +213,7 @@
 
             <!-- 4. BAÚ DE OURO INTERATIVO (Com tampa que abre de verdade!) -->
             <div class="timeline-step flex flex-col items-center relative overflow-visible">
-                <div id="bau-de-ouro" data-step="4" class="gold-circle w-18 h-18 md:w-22 md:h-22 rounded-full flex items-center justify-center shadow-2xl z-20 cursor-pointer overflow-visible">
+                <div id="bau-de-ouro" data-step="4" onclick="triggerChestManually()" class="gold-circle w-18 h-18 md:w-22 md:h-22 rounded-full flex items-center justify-center shadow-2xl z-20 cursor-pointer overflow-visible">
                     <svg class="w-12 h-12 md:w-15 md:h-15 drop-shadow-[0_4px_15px_rgba(251,191,36,0.8)]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                         
                         <!-- Moedas de Ouro brilhando estaticamente no fundo do baú antes de abrir -->
@@ -297,38 +296,34 @@
         </div>
     </footer>
 
-    <!-- ENGINE DE INTERAÇÃO E ÁUDIO -->
+    <!-- ENGINE DE INTERAÇÃO E ÁUDIO MELHORADA -->
     <script>
         let audioCtx = null;
         let audioUnlocked = false;
         let activatedSteps = new Set(); 
 
-        // Desbloqueio dinâmico do contexto de áudio em ambientes mobile
-        function unlockAudio() {
+        // Função de desbloqueio suave em background (Ocorre na primeira interação do usuário com a página)
+        function autoUnlockAudio() {
             if (audioUnlocked) return;
             try {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 if (audioCtx.state === 'suspended') {
                     audioCtx.resume();
                 }
-                
-                const buffer = audioCtx.createBuffer(1, 1, 22050);
-                const source = audioCtx.createBufferSource();
-                source.buffer = buffer;
-                source.connect(audioCtx.destination);
-                source.start(0);
-                
                 audioUnlocked = true;
                 
-                const events = ['click', 'touchstart', 'touchend', 'mousedown', 'scroll'];
-                events.forEach(e => document.removeEventListener(e, unlockAudio));
+                // Remove os escutadores para liberar memória após destravar o áudio do navegador
+                const events = ['touchstart', 'click', 'scroll', 'mousedown', 'pointerdown'];
+                events.forEach(e => document.removeEventListener(e, autoUnlockAudio));
             } catch (err) {
-                console.log("Ação do usuário necessária para áudio.", err);
+                console.log("Aguardando interação inicial para liberação de áudio.");
             }
         }
 
-        const interactionEvents = ['click', 'touchstart', 'touchend', 'mousedown', 'scroll'];
-        interactionEvents.forEach(e => document.addEventListener(e, unlockAudio, { passive: true }));
+        // Adiciona escutadores para destravar o áudio assim que o usuário fizer QUALQUER movimento
+        ['touchstart', 'click', 'scroll', 'mousedown', 'pointerdown'].forEach(evt => {
+            document.addEventListener(evt, autoUnlockAudio, { passive: true });
+        });
 
         // SOM 1: Feedback Tátil Suave (Passos P, A, V)
         function playSoftTap() {
@@ -339,8 +334,8 @@
                 const gain = audioCtx.createGain();
                 
                 osc.type = 'triangle';
-                osc.frequency.setValueAtTime(800, now); 
-                osc.frequency.exponentialRampToValueAtTime(350, now + 0.05);
+                osc.frequency.setValueAtTime(600, now); 
+                osc.frequency.exponentialRampToValueAtTime(300, now + 0.05);
                 
                 gain.gain.setValueAtTime(0.04, now);
                 gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
@@ -353,90 +348,105 @@
             } catch (e) { console.warn(e); }
         }
 
-        // SOM DO BAÚ SE ABRINDO + QUEDA DAS MOEDAS DE OURO
+        // SEQUÊNCIA DE SOM ATUALIZADA: Ranger de madeira -> Seguido de Moedas caindo
         function playChestAndCoinsSound() {
             if (!audioCtx || !audioUnlocked) return;
             try {
                 const now = audioCtx.currentTime;
 
-                // 1. Efeito do Baú Abrindo (Ranger de madeira antiga + Clique metálico)
+                // 1. Som do Ranger do Baú de Ouro se Abrindo (Começa no tempo 0 e dura 0.7 segundos)
                 const lidOsc = audioCtx.createOscillator();
                 const lidGain = audioCtx.createGain();
                 
                 lidOsc.type = 'sawtooth';
-                lidOsc.frequency.setValueAtTime(110, now);
-                lidOsc.frequency.linearRampToValueAtTime(190, now + 0.4); 
+                lidOsc.frequency.setValueAtTime(95, now);
+                lidOsc.frequency.linearRampToValueAtTime(170, now + 0.5); 
                 
                 const filter = audioCtx.createBiquadFilter();
                 filter.type = 'lowpass';
-                filter.frequency.setValueAtTime(450, now);
+                filter.frequency.setValueAtTime(380, now);
 
-                lidGain.gain.setValueAtTime(0.07, now);
-                lidGain.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
+                lidGain.gain.setValueAtTime(0.14, now);
+                lidGain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
                 
                 lidOsc.connect(filter);
                 filter.connect(lidGain);
                 lidGain.connect(audioCtx.destination);
                 
                 lidOsc.start(now);
-                lidOsc.stop(now + 0.6);
+                lidOsc.stop(now + 0.75);
 
-                // Clique metálico do trinco se soltando
+                // Clique mecânico do trinco (Ocorre logo no início do ranger)
                 const latchOsc = audioCtx.createOscillator();
                 const latchGain = audioCtx.createGain();
                 latchOsc.type = 'triangle';
-                latchOsc.frequency.setValueAtTime(950, now);
-                latchGain.gain.setValueAtTime(0.05, now);
+                latchOsc.frequency.setValueAtTime(750, now);
+                latchGain.gain.setValueAtTime(0.08, now);
                 latchGain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
                 latchOsc.connect(latchGain);
                 latchGain.connect(audioCtx.destination);
                 latchOsc.start(now);
                 latchOsc.stop(now + 0.09);
 
-                // 2. Cascata Lenta de Moedas de Ouro Tilintando (Som encorpado e rico)
-                for (let i = 0; i < 24; i++) {
-                    const delay = 0.2 + (i * 0.12); // Atraso de queda física
+                // 2. Cascata de Moedas de Ouro (Começa com um delay estratégico de 0.6s, logo após o início do ranger da madeira)
+                const numMoedasSons = 30;
+                const coinStartDelay = 0.6; // Atraso para as moedas começarem a fazer barulho de verdade
+
+                for (let i = 0; i < numMoedasSons; i++) {
+                    const delay = coinStartDelay + (i * 0.14); // Ritmo ritmado de queda
                     const coinOsc = audioCtx.createOscillator();
                     const coinGain = audioCtx.createGain();
                     
                     coinOsc.type = 'sine';
-                    // Tom do ouro ligeiramente mais encorpado e denso que o da prata
-                    coinOsc.frequency.setValueAtTime(1250 + Math.random() * 650, now + delay);
+                    // Frequência rica do ouro polido caindo
+                    coinOsc.frequency.setValueAtTime(1150 + Math.random() * 550, now + delay);
                     
-                    coinGain.gain.setValueAtTime(0.015, now + delay);
-                    coinGain.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.18);
+                    coinGain.gain.setValueAtTime(0.03, now + delay);
+                    coinGain.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.25);
                     
                     coinOsc.connect(coinGain);
                     coinGain.connect(audioCtx.destination);
                     
                     coinOsc.start(now + delay);
-                    coinOsc.stop(now + delay + 0.2);
+                    coinOsc.stop(now + delay + 0.28);
                 }
             } catch (e) { console.warn(e); }
         }
 
-        // GERADOR EXCLUSIVO DE MOEDAS DE OURO EM VELOCIDADE SUAVE
+        // GERADOR DE MOEDAS DE OURO EM VETOR (Baseado no design da imagem)
         function spawnGoldMoneyParticles() {
             const bau = document.getElementById('bau-de-ouro');
             const rect = bau.getBoundingClientRect();
             const bauCenterX = rect.left + window.scrollX + rect.width / 2;
             const bauCenterY = rect.top + window.scrollY + rect.height / 2;
             
-            const totalCoins = 60; 
+            const totalCoins = 55; 
             
             for (let i = 0; i < totalCoins; i++) {
                 const coin = document.createElement('div');
-                coin.className = 'gold-coin text-2xl sm:text-4xl select-none';
-                coin.textContent = '🪙'; // Emoji nativo de ouro sem filtros descolorantes
-                coin.style.position = 'absolute';
+                coin.className = 'gold-coin';
+                
+                // CRIAÇÃO DO VETOR DA MOEDA EXATAMENTE IGUAL À IMAGEM ENVIADA
+                coin.innerHTML = `
+                    <svg viewBox="0 0 40 40" class="w-8 h-8 sm:w-11 sm:h-11 drop-shadow-[0_4px_6px_rgba(120,53,15,0.6)]">
+                        <!-- Relevo externo (Borda grossa e escura de bronze/ouro antigo) -->
+                        <circle cx="20" cy="20" r="18" fill="#B45309" stroke="#451A03" stroke-width="2.5" />
+                        <!-- Superfície da moeda (Dourado vibrante) -->
+                        <circle cx="20" cy="18" r="15" fill="#FBBF24" />
+                        <!-- Borda interna da moeda para efeito de relevo 3D -->
+                        <circle cx="20" cy="18" r="12" fill="#F59E0B" stroke="#D97706" stroke-width="1.2" />
+                        <!-- Cifrão ($) centralizado em tom de ouro escuro -->
+                        <text x="20" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="16" fill="#78350F" text-anchor="middle">$</text>
+                    </svg>
+                `;
 
                 if (i < totalCoins * 0.4) {
-                    // 1. Moedas saindo voando diretamente de dentro do baú
+                    // 1. Moedas saindo diretamente do baú
                     const angle = Math.random() * Math.PI * 2;
-                    const distance = 90 + Math.random() * 150; 
+                    const distance = 80 + Math.random() * 160; 
                     
                     const x = Math.cos(angle) * distance;
-                    const y = Math.sin(angle) * distance + 140; 
+                    const y = Math.sin(angle) * distance + 160; 
                     const rotation = -180 + Math.random() * 360;
 
                     coin.style.setProperty('--x', `${x}px`);
@@ -446,15 +456,15 @@
                     coin.style.left = `${bauCenterX}px`;
                     coin.style.top = `${bauCenterY}px`;
                 } else {
-                    // 2. Chuva de ouro caindo e cobrindo a tela do usuário por completo
+                    // 2. Chuva de moedas caindo suavemente pelas laterais da tela
                     const screenWidth = window.innerWidth;
                     const screenHeight = window.innerHeight;
                     
                     const startX = Math.random() * screenWidth + window.scrollX;
-                    const startY = window.scrollY + (Math.random() * (screenHeight * 0.45));
+                    const startY = window.scrollY + (Math.random() * (screenHeight * 0.4));
                     
-                    const x = (Math.random() - 0.5) * 140; 
-                    const y = 380 + Math.random() * 260;   
+                    const x = (Math.random() - 0.5) * 150; 
+                    const y = 350 + Math.random() * 300;   
                     const rotation = -360 + Math.random() * 720;
 
                     coin.style.setProperty('--x', `${x}px`);
@@ -467,11 +477,18 @@
 
                 document.body.appendChild(coin);
                 
-                // Descarte das moedas após finalizarem a animação em câmera lenta (4.2s)
+                // Descarte suave das moedas após finalizarem a queda (4.5 segundos)
                 setTimeout(() => {
                     coin.remove();
-                }, 4200);
+                }, 4500);
             }
+        }
+
+        // Permite abrir o baú manualmente clicando nele a qualquer momento
+        function triggerChestManually() {
+            autoUnlockAudio();
+            playChestAndCoinsSound();
+            spawnGoldMoneyParticles();
         }
 
         function scrollToSystem() {
