@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+l<!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -172,7 +172,7 @@
 
             <!-- INTERVALO 2: ENTRE A E V -->
             <div class="grid grid-cols-2 gap-x-2 sm:gap-x-8 md:gap-x-16 w-full relative min-h-[120px] items-center">
-                <!-- Lado Esquerdo (AJUSTE 2 - ANÚNCIOS INTENCIONAIS) -->
+                <!-- Lado Esquerdo -->
                 <div class="reveal-item text-right pr-2 sm:pr-8 md:pr-12 flex flex-col justify-center items-end">
                     <p class="text-slate-300 text-[11px] sm:text-xs md:text-sm max-w-[140px] sm:max-w-xs font-medium leading-relaxed">
                         Anúncios cirúrgicos para captar pessoas que <strong class="text-white">já buscam ativamente</strong> por terapia agora.
@@ -196,7 +196,7 @@
 
             <!-- INTERVALO 3: ENTRE V E BAÚ DE OURO -->
             <div class="grid grid-cols-2 gap-x-2 sm:gap-x-8 md:gap-x-16 w-full relative min-h-[120px] items-center">
-                <!-- Lado Esquerdo (AJUSTE 3 - TREINAMENTO DE VENDAS) -->
+                <!-- Lado Esquerdo -->
                 <div class="reveal-item text-right pr-2 sm:pr-8 md:pr-12 flex flex-col justify-center items-end">
                     <p class="text-slate-300 text-[11px] sm:text-xs md:text-sm max-w-[140px] sm:max-w-xs font-medium leading-relaxed">
                         Você receberá um <strong class="text-[#00B4D8]">treinamento prático de vendas</strong> com scripts humanizados para fechar sessões sem parecer invasivo.
@@ -348,69 +348,113 @@
             } catch (e) { console.warn(e); }
         }
 
-        // AJUSTE 1: Ranger de madeira -> Seguido e mesclado com sons nítidos de moedas caindo
+        // SÍNTESE DE SINAL METÁLICO REALISTA (Síntese Aditiva de Clink de Metal)
+        function playSingleCoinClink(delay) {
+            const now = audioCtx.currentTime + delay;
+            
+            // Frequências inarmônicas para recriar o "metal" (desalinhadas de propósito)
+            const metallicFrequencies = [850, 1075, 2200, 4400, 5800, 7900];
+            
+            metallicFrequencies.forEach((freq, idx) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                // Variabilidade física entre osciladores senoidais e triangulares
+                osc.type = (idx % 2 === 0) ? 'sine' : 'triangle';
+                // Adiciona uma leve micro-desafinação aleatória para cada moeda
+                osc.frequency.setValueAtTime(freq + (Math.random() * 140 - 70), now);
+                
+                gain.gain.setValueAtTime(0.0, now);
+                // Ataque extremamente veloz (o impacto inicial rígido)
+                gain.gain.linearRampToValueAtTime(0.05, now + 0.002);
+                
+                // Decaimento natural do metal (frequências mais agudas desaparecem mais rápido)
+                const decayTime = 0.08 + (Math.random() * 0.12) - (idx * 0.01);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + Math.max(0.01, decayTime));
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start(now);
+                osc.stop(now + decayTime + 0.05);
+            });
+
+            // Gerador de ruído branco de altíssima frequência para simular o choque das moedas ("Click/Clack" físico)
+            const bufferSize = audioCtx.sampleRate * 0.015; // 15ms de impacto físico
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = Math.random() * 2 - 1;
+            }
+            
+            const noiseSource = audioCtx.createBufferSource();
+            noiseSource.buffer = buffer;
+            
+            const noiseFilter = audioCtx.createBiquadFilter();
+            noiseFilter.type = 'bandpass';
+            noiseFilter.frequency.value = 6500; // Ruído focado estritamente em agudos de moedas
+            noiseFilter.Q.value = 4;
+            
+            const noiseGain = audioCtx.createGain();
+            noiseGain.gain.setValueAtTime(0.04, now);
+            noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.01);
+            
+            noiseSource.connect(noiseFilter);
+            noiseFilter.connect(noiseGain);
+            noiseGain.connect(audioCtx.destination);
+            
+            noiseSource.start(now);
+            noiseSource.stop(now + 0.02);
+        }
+
+        // Ranger de madeira do Baú seguido pela Cascata Realista de Moedas
         function playChestAndCoinsSound() {
             if (!audioCtx || !audioUnlocked) return;
             try {
                 const now = audioCtx.currentTime;
 
-                // 1. Som do Ranger do Baú se Abrindo (Duração de 0.8s)
+                // 1. Som do Ranger de Abertura da Madeira do Baú (Duração de 0.75s)
                 const lidOsc = audioCtx.createOscillator();
                 const lidGain = audioCtx.createGain();
                 
                 lidOsc.type = 'sawtooth';
-                lidOsc.frequency.setValueAtTime(95, now);
-                lidOsc.frequency.linearRampToValueAtTime(160, now + 0.6); 
+                lidOsc.frequency.setValueAtTime(90, now);
+                lidOsc.frequency.linearRampToValueAtTime(145, now + 0.55); 
                 
-                const filter = document.createElement('div'); // Apenas criando uma variável limpa
                 const audioFilter = audioCtx.createBiquadFilter();
                 audioFilter.type = 'lowpass';
-                audioFilter.frequency.setValueAtTime(350, now);
+                audioFilter.frequency.setValueAtTime(320, now);
 
-                lidGain.gain.setValueAtTime(0.15, now);
-                lidGain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+                lidGain.gain.setValueAtTime(0.12, now);
+                lidGain.gain.exponentialRampToValueAtTime(0.001, now + 0.75);
                 
                 lidOsc.connect(audioFilter);
                 audioFilter.connect(lidGain);
                 lidGain.connect(audioCtx.destination);
                 
                 lidOsc.start(now);
-                lidOsc.stop(now + 0.85);
+                lidOsc.stop(now + 0.8);
 
-                // Clique metálico do trinco do baú bem no começo
+                // Clique metálico seco da trava do trinco abrindo no começo exato
                 const latchOsc = audioCtx.createOscillator();
                 const latchGain = audioCtx.createGain();
                 latchOsc.type = 'triangle';
-                latchOsc.frequency.setValueAtTime(700, now);
-                latchGain.gain.setValueAtTime(0.1, now);
-                latchGain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+                latchOsc.frequency.setValueAtTime(680, now);
+                latchGain.gain.setValueAtTime(0.08, now);
+                latchGain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
                 latchOsc.connect(latchGain);
                 latchGain.connect(audioCtx.destination);
                 latchOsc.start(now);
-                latchOsc.stop(now + 0.11);
+                latchOsc.stop(now + 0.09);
 
-                // 2. Cascata Rítmica e Altamente Audível de Moedas de Ouro Caindo (Entra aos 0.3 segundos)
-                const numMoedasSons = 35;
-                const coinStartDelay = 0.3; // Começa a cair logo após o baú começar a abrir de fato
+                // 2. Cascata Realista de Moedas (Abertura do Baú gera o início dos tilintares metálicos)
+                const totalMoedas = 30; // Quantidade perfeita de impacto/derramamento de ouro
+                const delayInicialMoedas = 0.25; // Começa um pouco antes de abrir totalmente
 
-                for (let i = 0; i < numMoedasSons; i++) {
-                    const delay = coinStartDelay + (i * 0.12); // Ritmo fluido de cascata
-                    const coinOsc = audioCtx.createOscillator();
-                    const coinGain = audioCtx.createGain();
-                    
-                    coinOsc.type = 'sine';
-                    // Frequência muito mais cristalina e aguda para simular o tilintar de ouro físico caindo
-                    coinOsc.frequency.setValueAtTime(1800 + Math.random() * 1000, now + delay);
-                    
-                    // Volume muito mais presente e perceptível
-                    coinGain.gain.setValueAtTime(0.15, now + delay);
-                    coinGain.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.35);
-                    
-                    coinOsc.connect(coinGain);
-                    coinGain.connect(audioCtx.destination);
-                    
-                    coinOsc.start(now + delay);
-                    coinOsc.stop(now + delay + 0.4);
+                for (let i = 0; i < totalMoedas; i++) {
+                    // Intervalos rítmicos simulando um monte de moedas caindo em escada
+                    const delay = delayInicialMoedas + (i * 0.09) + (Math.random() * 0.05);
+                    playSingleCoinClink(delay);
                 }
             } catch (e) { console.warn(e); }
         }
